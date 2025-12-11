@@ -1,0 +1,250 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #252734;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header > h1 {
+    color: #252734;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+#connectBtn {
+    background: #E2584D;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+#connectBtn:hover {
+    background: #c73e33;
+    transform: scale(1.05);
+}
+
+#connectBtn:disabled {
+    background: #4CAF50;
+    cursor: not-allowed;
+}
+
+#walletAddress {
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+    font-family: monospace;
+}
+
+/* Score board */
+.score-board {
+    margin: 30px auto;
+    border: 3px solid white;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+    color: white;
+    font-size: 46px;
+    padding: 20px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.badge {
+    background: #E2584D;
+    color: white;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#user-label {
+    position: absolute;
+    top: 30px;
+    left: -30px;
+}
+
+#computer-label {
+    position: absolute;
+    top: 30px;
+    right: -35px;
+}
+
+/* Result display */
+.result {
+    font-size: 32px;
+    color: white;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result > p {
+    text-align: center;
+    font-weight: bold;
+    padding: 0 20px;
+    transition: color 0.3s ease;
+}
+
+/* Loading indicator */
+#loading {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#loading p {
+    color: #FFC107;
+    font-size: 24px;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Choices section */
+.choices {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.choice {
+    border: 4px solid white;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 20px;
+    padding: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.choice img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Убрали фильтр, чтобы картинки были видны */
+}
+
+.choice:hover {
+    background: #4CAF50;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.choice:active {
+    transform: scale(0.95);
+}
+
+/* Action message */
+#action-msg {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+/* Info panel */
+.info-panel {
+    max-width: 600px;
+    margin: 50px auto 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-panel h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.info-panel ul {
+    list-style: none;
+    color: white;
+    font-size: 16px;
+}
+
+.info-panel ul li {
+    padding: 10px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    border-left: 4px solid #4CAF50;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .choice {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header > h1 {
+        font-size: 28px;
+    }
+
+    .result {
+        font-size: 24px;
+    }
+
+    .score-board {
+        font-size: 36px;
+        width: 180px;
+    }
+
+    #user-label {
+        left: -25px;
+    }
+
+    #computer-label {
+        right: -30px;
+    }
+}
+
+/* Win/Lose/Draw color states */
+.win-color {
+    color: #4CAF50 !important;
+}
+
+.lose-color {
+    color: #E2584D !important;
+}
+
+.draw-color {
+    color: #FFC107 !important;
+}

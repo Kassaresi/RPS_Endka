@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Blockchain Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+        <button id="connectBtn">Connect Wallet</button>
+        <p id="walletAddress"></p>
+    </header>
+
+    <div class="score-board">
+        <div id="user-label" class="badge">user</div>
+        <div id="computer-label" class="badge">computer</div>
+        <span id="user-score">0</span>:<span id="computer-score">0</span>
+    </div>
+
+    <div class="result">
+        <p>Make your move to start the game!</p>
+    </div>
+
+    <div id="loading">
+        <p>⏳ Transaction pending... Please wait</p>
+    </div>
+
+    <div class="choices">
+        <div class="choice" id="r">
+            <img src="image/rock.jpg" alt="Rock">
+        </div>
+        <div class="choice" id="p">
+            <img src="image/paper.jpg" alt="Paper">
+        </div>
+        <div class="choice" id="s">
+            <img src="image/scissors.jpg" alt="Scissors">
+        </div>
+    </div>
+
+    <p id="action-msg">Connect your wallet and make your move!</p>
+
+    <div class="info-panel">
+        <h3>Game Rules:</h3>
+        <ul>
+            <li>💰 Bet: 0.0001 tBNB per game</li>
+            <li>🏆 Win: Get 0.0002 tBNB (2x your bet)</li>
+            <li>🤝 Draw: Get your 0.0001 tBNB back</li>
+            <li>❌ Lose: Lose your bet</li>
+        </ul>
+    </div>
+
+    <!-- Загружаем библиотеки в правильном порядке -->
+    <!-- Вариант 1: cdnjs (самый надежный) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    
+    <!-- Вариант 2: если первый не работает, раскомментируйте этот -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script> -->
+    
+    <!-- Вариант 3: если второй не работает, раскомментируйте этот -->
+    <!-- <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script> -->
+    
+    <!-- Теперь загружаем наш скрипт -->
+    <script src="app.js"></script>
+</body>
+</html>
