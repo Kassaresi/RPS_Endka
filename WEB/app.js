@@ -5,54 +5,71 @@ let signer;
 let contract;
 
 // ВАЖНО: Замените на ваш адрес контракта после деплоя
-const CONTRACT_ADDRESS = "0x8658cF934Eef997CFE1b981c97325A428d4BAaE1";
+const CONTRACT_ADDRESS = "0x92e0DEe33DB8E8e01e9541892E9D66bF99676Ff3";
 
 // ABI контракта (скопируйте из Remix после компиляции)
-const CONTRACT_ABI = [
-    {
-        "inputs": [
-            {
-                "internalType": "enum RockPaperScissors.Choice",
-                "name": "_playerChoice",
-                "type": "uint8"
-            }
-        ],
-        "name": "play",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "address",
-                "name": "player",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "enum RockPaperScissors.Choice",
-                "name": "playerChoice",
-                "type": "uint8"
-            },
-            {
-                "indexed": false,
-                "internalType": "enum RockPaperScissors.Choice",
-                "name": "computerChoice",
-                "type": "uint8"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "result",
-                "type": "string"
-            }
-        ],
-        "name": "GamePlayed",
-        "type": "event"
-    }
+const CONTRACT_ABI =[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "enum RockPaperScissors.Choice",
+				"name": "playerChoice",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "enum RockPaperScissors.Choice",
+				"name": "computerChoice",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "result",
+				"type": "string"
+			}
+		],
+		"name": "GamePlayed",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum RockPaperScissors.Choice",
+				"name": "_playerChoice",
+				"type": "uint8"
+			}
+		],
+		"name": "play",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [],
+		"name": "BET_AMOUNT",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
 ];
 
 // Элементы DOM
@@ -234,14 +251,13 @@ async function game(userChoice) {
         console.log("Player choice number:", playerChoice);
 
         // Сумма ставки
-        const betAmount = ethers.utils.parseEther("0.0001");
+        const betAmount = ethers.utils.parseEther("0.001");
         console.log("Bet amount:", betAmount.toString());
 
         // Отправка транзакции
         console.log("Sending transaction...");
         const tx = await contract.play(playerChoice, { 
-            value: betAmount,
-            gasLimit: 300000 // Установить лимит газа
+            value: betAmount
         });
         
         console.log("Transaction sent!");
